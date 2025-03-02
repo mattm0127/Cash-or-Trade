@@ -13,7 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Set up SSH key
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
@@ -21,40 +20,7 @@ jobs:
           known_hosts: |
             172.31.6.135 ssh-rsa SHA256:QaIwWLBYsv2FDPCTQcRTe1QmmuFW/IQlF/cKFhZK6uk
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-
-      - name: Virtual env
-        run: |
-          cd /home/ubuntu/Cash-or-Trade
-          sudo apt install python3.12-venv -y
-          python3 -m venv .venv
-          source .venv/bin/activate
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      #- name: Run Unit Tests
-      #  run: |
-      #    python3 -m unittest app.py
-
-      # ---------- REMOTE DEPLOYMENT STEPS ----------
-
-      - name: SSH:Pull latest code
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          port: 22
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            git pull origin main
-
-      - name: SSH:Install dependencies & restart Flask App
+      - name: SSH:Pull, Install, Restart
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -63,6 +29,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd Cash-or-Trade
+            git pull origin main
             source .venv/bin/activate
             pip install -r requirements.txt
             pkill -f "python app.py" || true
