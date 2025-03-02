@@ -41,7 +41,7 @@ jobs:
 
       # ---------- REMOTE DEPLOYMENT STEPS ----------
 
-      - name: SSH: Pull latest code
+      - name: SSH:Pull latest code
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -52,7 +52,7 @@ jobs:
             cd /home/mmennella/cash_or_trade
             git pull origin main
 
-      - name: SSH: Install dependencies & restart Flask App
+      - name: SSH:Install dependencies & restart Flask App
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.EC2_HOST }}
