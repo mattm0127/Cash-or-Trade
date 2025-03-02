@@ -2,7 +2,6 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from cash_or_trade import views
 from cash_or_trade.blueprints import accounts, listings, purchases
 
 app = Flask(__name__)
