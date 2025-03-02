@@ -19,7 +19,7 @@ jobs:
         with:
           key: ${{ secrets.EC2_SSH_KEY }}
           known_hosts: |
-            # Optional: add host fingerprint for your EC2
+            172.31.6.135 ssh-rsa SHA256:QaIwWLBYsv2FDPCTQcRTe1QmmuFW/IQlF/cKFhZK6uk
 
       - name: Set up Python
         uses: actions/setup-python@v4
