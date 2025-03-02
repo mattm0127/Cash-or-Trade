@@ -18,7 +18,7 @@ jobs:
         with:
           key: ${{ secrets.EC2_SSH_KEY }}
           known_hosts: |
-            172.31.6.135 ssh-rsa SHA256:QaIwWLBYsv2FDPCTQcRTe1QmmuFW/IQlF/cKFhZK6uk
+            3.145.81.15 ssh-rsa SHA256:QaIwWLBYsv2FDPCTQcRTe1QmmuFW/IQlF/cKFhZK6uk
 
       - name: SSH:Pull, Install, Restart
         uses: appleboy/ssh-action@v0.1.8
