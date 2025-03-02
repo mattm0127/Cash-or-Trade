@@ -28,6 +28,7 @@ jobs:
 
       - name: Virtual env
         run: |
+          cd Cash-or-Trade
           sudo apt install python3.12-venv -y
           python3 -m venv .venv
           source .venv/bin/activate
@@ -47,22 +48,21 @@ jobs:
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: mmennella
+          username: ubuntu
           port: 22
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/mmennella/
             git pull origin main
 
       - name: SSH:Install dependencies & restart Flask App
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: mmennella
+          username: ubuntu
           port: 22
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/mmennella/Cash-or-Trade
+            cd Cash-or-Trade
             source .venv/bin/activate
             pip install -r requirements.txt
             pkill -f "python app.py" || true
