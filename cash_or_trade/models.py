@@ -1,4 +1,4 @@
-from cash_or_trade.extensions import db
+from cash_or_trade.extensions import database as db
 import datetime
 
 class Users(db.Model):

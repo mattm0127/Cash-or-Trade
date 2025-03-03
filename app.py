@@ -2,8 +2,7 @@ import os
 import sqlite3
 
 from flask import Flask, render_template, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from cash_or_trade.extensions import db
+from cash_or_trade.extensions import database
 from cash_or_trade.blueprints import accounts, auth, listings, purchases
 from decouple import config
 
@@ -18,7 +17,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = config("DATABASE_CONNECTION")
 
 app.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = False
-db.init_app(app)
+database.init_app(app)
 
 app.register_blueprint(accounts.accounts)
 app.register_blueprint(auth.auth)
