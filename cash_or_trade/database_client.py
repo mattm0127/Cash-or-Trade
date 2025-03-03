@@ -1,5 +1,5 @@
 import bcrypt
-from app import db
+from extensions import db
 
 class DBClient:
     def __init__(self):
