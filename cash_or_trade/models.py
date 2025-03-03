@@ -1,4 +1,4 @@
-from extensions import db
+from cash_or_trade.extensions import db
 import datetime
 
 class Users(db.Model):
@@ -58,6 +58,3 @@ class Purchases(db.Model):
 
     seller = db.relationship('Users', foreign_keys=[seller_id], back_populates='sales')
     buyer = db.relationship('Users', foreign_keys=[buyer_id], back_populates='bought')
-
-def create_database():
-    db.create_all()

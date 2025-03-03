@@ -1,2 +1,0 @@
-from purchases import purchases
-
