@@ -3,7 +3,7 @@ import sqlite3
 
 from flask import Flask, render_template, redirect, url_for
 from cash_or_trade.extensions import database
-from cash_or_trade.blueprints import accounts, auth, listings, purchases
+from cash_or_trade.blueprints import accounts, items, listings, purchases
 from decouple import config
 
 app = Flask(__name__)
@@ -27,7 +27,7 @@ app.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = False
 database.init_app(app)
 
 app.register_blueprint(accounts.accounts)
-app.register_blueprint(auth.auth)
+app.register_blueprint(items.items)
 app.register_blueprint(listings.listings)
 app.register_blueprint(purchases.purchases)
 

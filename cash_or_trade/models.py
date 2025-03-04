@@ -27,7 +27,7 @@ class Items(db.Model):
     description_id = db.Column(db.Integer)
     price = db.Column(db.Float, nullable=False)
     tradeable = db.Column(db.Boolean, nullable=False)
-    status = db.Column(db.String(10), nullable=False, default='available')
+    status = db.Column(db.String(10), nullable=False, default='private')
     created = db.Column(db.DateTime, default=datetime.datetime.now())
     updated = db.Column(db.DateTime, onupdate=datetime.datetime.now())
 
