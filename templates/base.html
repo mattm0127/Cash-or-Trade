@@ -10,6 +10,7 @@
     {% if session.username %}
         <p style="text-align: center;">
             <a href="{{ url_for('home') }}">Home</a> -
+            <a href="{{ url_for('items.user_items', username=session.username) }}">My Items</a> -
             <a href="{{ url_for('accounts.logout') }}">Logout</a>
         </p>
     {% else %}

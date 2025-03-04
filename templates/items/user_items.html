@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{{ url_for('items.add_item', username=session.username) }}">Add Item</a>
+    <h2>{{session.username}}'s Items</h2>
+    {% for item in user_items %}
+        <p>{{item.name}} - {{item.price}}</p>
+    {% endfor %}
+{% endblock %}
