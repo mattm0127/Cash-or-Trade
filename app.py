@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = config("SECRET_KEY")
 enviornment = 'dev'
 ### If DATABASE_CONNECTION not in .env a sqlite3 db is started. ###
-if config("DATABASE_CONNECTION", default=False, cast=bool):
+if config("DATABASE_CONNECTION", default=False):
     app.config['SQLALCHEMY_DATABASE_URI'] = config("DATABASE_CONNECTION")
     enviornment = 'production'
 else:
@@ -39,7 +39,6 @@ if __name__ == '__main__':
     with app.app_context():
         from cash_or_trade import models
         database.create_all()
-
        ### FOR TESTING ###
     if enviornment == 'production':
         app.run(host='0.0.0.0', debug=False)
