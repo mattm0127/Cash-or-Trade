@@ -8,14 +8,20 @@ from decouple import config
 
 app = Flask(__name__)
 app.secret_key = config("SECRET_KEY")
-    ### For Testing ###
-# BASE_PATH = os.path.dirname(os.path.abspath(__file__))
-# DB_PATH = 'sqlite:///' + os.path.join(BASE_PATH + '/app.db')
-# print(DB_PATH)
-# app.config['SQLALCHEMY_DATABASE_URI'] = DB_PATH
+enviornment = 'dev'
+### If DATABASE_CONNECTION not in .env a sqlite3 db is started. ###
+if config("DATABASE_CONNECTION", default=False, cast=bool):
+    app.config['SQLALCHEMY_DATABASE_URI'] = config("DATABASE_CONNECTION")
+    enviornment = 'production'
+else:
+    BASE_PATH = os.path.dirname(os.path.abspath(__file__))
+    DB_PATH = 'sqlite:///' + os.path.join(BASE_PATH + '/app.db')
+    print(DB_PATH)
+    app.config['SQLALCHEMY_DATABASE_URI'] = DB_PATH
+    enviornment = 'dev'
 
     ### For Production ###
-app.config['SQLALCHEMY_DATABASE_URI'] = config("DATABASE_CONNECTION")
+# app.config['SQLALCHEMY_DATABASE_URI'] = config("DATABASE_CONNECTION")
 
 app.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = False
 database.init_app(app)
@@ -35,7 +41,7 @@ if __name__ == '__main__':
         database.create_all()
 
        ### FOR TESTING ###
-    # app.run(debug=True)
-
-       ### FOR PRODUCTION ###
-    app.run(host='0.0.0.0', debug=True)
+    if enviornment == 'production':
+        app.run(host='0.0.0.0', debug=False)
+    else:
+        app.run(debug=True)

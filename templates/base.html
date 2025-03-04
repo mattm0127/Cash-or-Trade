@@ -7,11 +7,21 @@
 </head>
 <body>
     <h1 style="text-align: center;">Cash or Trade</h1>
-    <p style="text-align: center;">
-        <a href="{{ url_for('home') }}">Home</a> - 
-        <a href="{{ url_for('accounts.register') }}">Regiser</a>
-    </p>
+    {% if session.username %}
+        <p style="text-align: center;">
+            <a href="{{ url_for('home') }}">Home</a> -
+            <a href="{{ url_for('accounts.logout') }}">Logout</a>
+        </p>
+    {% else %}
+        <p style="text-align: center;">
+            <a href="{{ url_for('home') }}">Home</a> -
+            <a href="{{ url_for('accounts.login') }}">Login</a> - 
+            <a href="{{ url_for('accounts.register') }}">Regiser</a> 
+        </p>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
+
 </body>
 </html>

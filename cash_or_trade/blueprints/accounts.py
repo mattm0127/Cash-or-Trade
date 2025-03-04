@@ -12,7 +12,6 @@ def register():
             session['username'] = response
             return redirect(url_for('home'))
         flash(response, category='message')
-        return render_template('accounts/register.html')
     return render_template('accounts/register.html')
     
 @accounts.route('/login', methods=['GET', 'POST'])
@@ -24,6 +23,9 @@ def login():
             session['username'] = response
             return redirect(url_for('home'))
         flash(response, category='message')
-        return render_template('accounts/login.html')
+    return render_template('accounts/login.html')
 
-
+@accounts.route('/logout')
+def logout():
+    session.pop('username')
+    return redirect(url_for('home'))
