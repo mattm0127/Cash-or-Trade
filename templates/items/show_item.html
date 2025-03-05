@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Name: {{item.name}}</p>
+    <p>Price: {{item.price}}</p>
+    <p>Title: {{item.description.title}}</p>
+    <p>Description: {{item.description.descr}}</p>
+    <p>Type: {{item.type}}</p>
+    <p>Can Trade: {{item.tradeable}}</p>
+    <p>Status: {{item.status}}</p>
+    <p>
+        <img src="{{item.description.img1}}" width="300px" height="200px">
+        <img src="{{item.description.img2}}" width="300px" height="200px">
+        <img src="{{item.description.img3}}" width="300px" height="200px">
+        <img src="{{item.description.img4}}" width="300px" height="200px">
+        <img src="{{item.description.img5}}" width="300px" height="200px">
+    </p>
+{% endblock %}
