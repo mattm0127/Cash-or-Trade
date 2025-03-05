@@ -89,7 +89,8 @@ def validate_user_login(form):
                         user.password):
             return (True, username)
         return (False, "Incorrect Password.")
-    except Exception:
+    except Exception as e:
+        print(e)
         return (False, "Incorrect Username")
 
 def user_items_get(username):
