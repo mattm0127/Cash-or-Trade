@@ -85,6 +85,7 @@ def validate_user_login(form):
     try:
         username = form.get('username')
         user = Users.query.filter(Users.username==username).first()
+        print('user exists')
         if bcrypt.checkpw(form.get('password').encode("utf-8"),
                         user.password):
             return (True, username)
