@@ -11,6 +11,6 @@ def user_items(username):
 @items.route('/<username>/add', methods=["GET", "POST"])
 def add_item(username):
     if request.method == "POST":
-        db_client.add_item_post(username, request.form)
-        return render_template('items/user_items.html')
+        db_client.add_item_post(username, request.form, request.files)
+        return redirect(url_for('items.user_items', username=username))
     return render_template('items/add_item.html')
