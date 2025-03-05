@@ -18,7 +18,7 @@ def register():
 def login():
     if request.method == 'POST':
         # Response will be username if valid or error message
-        valid, response = db_client.validate_user(request.form)
+        valid, response = db_client.validate_user_login(request.form)
         if valid:
             session['username'] = response
             return redirect(url_for('home'))

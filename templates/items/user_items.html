@@ -4,6 +4,7 @@
     <a href="{{ url_for('items.add_item', username=session.username) }}">Add Item</a>
     <h2>{{session.username}}'s Items</h2>
     {% for item in user_items %}
-        <p>{{item.name}} - {{item.price}}</p>
+        <p><img src="{{item.descriptions[0].img1}}"></p>
+        <p>Item Name: {{item.name}} - Price: ${{item.price}}</p>
     {% endfor %}
 {% endblock %}
