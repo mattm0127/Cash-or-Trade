@@ -14,7 +14,7 @@ class Users(db.Model):
     sales_amt = db.Column(db.Integer)
     purchases_amt = db.Column(db.Integer)
 
-    items = db.relationship('Items', back_populates='users', cascade="all, delete")
+    item = db.relationship('Items', back_populates='user', cascade="all, delete")
     sales = db.relationship('Purchases', foreign_keys="Purchases.seller_id", back_populates='seller')
     bought = db.relationship('Purchases', foreign_keys="Purchases.buyer_id", back_populates='buyer')
 
@@ -31,13 +31,13 @@ class Items(db.Model):
     created = db.Column(db.DateTime, default=datetime.datetime.now())
     updated = db.Column(db.DateTime, onupdate=datetime.datetime.now())
 
-    users = db.relationship('Users', back_populates="items")
-    descriptions = db.relationship('Descriptions', back_populates='items', cascade='all, delete')
+    user = db.relationship('Users', back_populates="item")
+    description = db.relationship('Descriptions', uselist=False, back_populates='item', cascade='all, delete')
 
 class Descriptions(db.Model):
     __tablename__ = 'descriptions'
     id = db.Column(db.Integer, primary_key=True)
-    item_id = db.Column(db.Integer, db.ForeignKey(Items.id, ondelete="CASCADE"), nullable=False)
+    item_id = db.Column(db.Integer, db.ForeignKey(Items.id, ondelete="CASCADE"), unique=True, nullable=False)
     title = db.Column(db.String(50), nullable=False)
     descr = db.Column(db.Text)
     img1 = db.Column(db.String(2048))
@@ -46,7 +46,7 @@ class Descriptions(db.Model):
     img4 = db.Column(db.String(2048))
     img5 = db.Column(db.String(2048))
 
-    items = db.relationship('Items', back_populates='descriptions')
+    item = db.relationship('Items', back_populates='description')
 
 class Purchases(db.Model):
     __tablename__ = 'purchases'

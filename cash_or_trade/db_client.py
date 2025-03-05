@@ -118,3 +118,13 @@ def add_item_post(username, form, files):
         print("Files uploaded")
     except Exception as e:
         print(e)
+
+def show_user_item_get(username, item_id):
+    try:
+        item = Items.query.get(item_id)
+        user = Users.query.get(item.user_id)
+        if user.username != username:
+            raise IndexError
+        return item
+    except Exception:
+        return "Item Not Found"

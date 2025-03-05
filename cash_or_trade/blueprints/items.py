@@ -14,3 +14,16 @@ def add_item(username):
         db_client.add_item_post(username, request.form, request.files)
         return redirect(url_for('items.user_items', username=username))
     return render_template('items/add_item.html')
+
+@items.route('/<username>/<item_id>')
+def show_user_item(username, item_id):
+    item = db_client.show_user_item_get(username, item_id)
+    return render_template('items/show_item.html', item=item)
+
+
+@items.route('/<username>/<item_id>/edit', methods=["GET", "POST"])
+def edit_item(username, item_id):
+    if request.method == "POST":
+        None
+    item = db_client.show_user_item_get(username, item_id)
+    return render_template('items/edit_item.html', item=item)
