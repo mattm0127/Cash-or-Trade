@@ -1,0 +1,30 @@
+.all-listings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 80% auto 0;
+}
+
+.listing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    text-align: center;
+    flex-basis: 300px;
+}
+
+.listing-img img {
+    display: block;
+    max-width: 100%;
+    height: 200px;
+}
+
+.listing-title {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.listing-text {
+    margin-top: 10px
+}

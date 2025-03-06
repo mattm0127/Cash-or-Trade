@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for listing in all_listings %}
-        <p>{{listing.name}} - ${{listing.price}}</p>
-        <p>Owner: {{listing.user.username}}</p>
-        <p><a href="{{ url_for('listings.show_listing', listing_id=listing.id)}}"><img src="{{listing.description.img1}}" width="300px" height="200px"></a></p>
-    {% endfor %}
+    <div class="all-listings">
+        {% for listing in all_listings %}
+        <div class="listing">
+            <div class="listing-title">
+                <b>{{listing.description.title}}</b>
+            </div>
+            <div class="listing-img">
+                <a href="{{ url_for('listings.show_listing', listing_id=listing.id)}}">
+                    <img src="{{listing.description.img1}}" width="300px" height="200px"></a>
+            </div>
+            <div class="listing-text">
+                <b>Owner:</b> {{listing.user.username}} - <b>Price:</b> ${{listing.price}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
