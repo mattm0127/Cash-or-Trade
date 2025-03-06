@@ -2,17 +2,27 @@
 
 {% block content %}
     <p>Name: {{item.name}}</p>
-    <p>Price: {{item.price}}</p>
+    <p>Price: ${{item.price}}</p>
     <p>Title: {{item.description.title}}</p>
     <p>Description: {{item.description.descr}}</p>
     <p>Type: {{item.type}}</p>
-    <p>Can Trade: {{item.tradeable}}</p>
+    <p>Tradeable: {{item.tradeable}}</p>
     <p>Status: {{item.status}}</p>
-    <p>
+    <p> {% if item.description.img1 %}
         <img src="{{item.description.img1}}" width="300px" height="200px">
+        {% endif %}
+        {% if item.description.img2 %}
         <img src="{{item.description.img2}}" width="300px" height="200px">
+        {% endif %}
+        {% if item.description.img3 %}
         <img src="{{item.description.img3}}" width="300px" height="200px">
+        {% endif %}
+        {% if item.description.img4 %}
         <img src="{{item.description.img4}}" width="300px" height="200px">
+        {% endif %}
+        {% if item.description.img5 %}
         <img src="{{item.description.img5}}" width="300px" height="200px">
+        {% endif %}
     </p>
+    <p><a href="{{ url_for('items.edit_item', username=session.username, item_id=item.id)}}">Edit</a></p>
 {% endblock %}

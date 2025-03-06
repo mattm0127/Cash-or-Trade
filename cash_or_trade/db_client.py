@@ -28,41 +28,39 @@ def _validate_new_user_form(form):
         return (False, 'Passwords do not match')
     return (True, form)
 
-def _add_description(form, files, item):
-
-    def _convert_and_upload_s3(files, new_desc, file_prefix):
-        db_columns = {1: 'img1', 
-                      2: 'img2', 
-                      3: 'img3', 
-                      4: 'img4', 
-                      5: 'img5'}
-        for x in range(1,6):
-            if files.get(f'img{x}'):
-                file = files.get(f'img{x}')
-                key = file_prefix + f'img{x}.png'
-                image = Image.open(file)
+def _convert_and_upload_s3(files, item):
+    db_columns = {1: 'img1', 
+                    2: 'img2', 
+                    3: 'img3', 
+                    4: 'img4', 
+                    5: 'img5'}
+    file_prefix = f"{item.user.username}/{item.id}/"
+    for x in range(1,6):
+        if files.get(f'img{x}'):
+            file = files.get(f'img{x}')
+            key = file_prefix + f'img{x}.png'
+            with Image.open(file) as image:
                 png_buffer = io.BytesIO()
                 image.save(png_buffer, format='PNG')
-                png_buffer.seek(0)
-                s3_client.upload_fileobj(png_buffer, 
-                                            config('BUCKET_NAME'), 
-                                            key, 
-                                            ExtraArgs={'ContentType': 'image/png'}
-                                            )
-                s3_url = f"https://{config('BUCKET_NAME')}.s3.{config('BUCKET_REGION')}.amazonaws.com/{key}"
-                setattr(new_desc, db_columns[x], s3_url)
-        return new_desc
-                
+            png_buffer.seek(0)
+            s3_client.upload_fileobj(png_buffer, 
+                                        config('BUCKET_NAME'), 
+                                        key, 
+                                        ExtraArgs={'ContentType': 'image/png'}
+                                        )
+            s3_url = f"https://{config('BUCKET_NAME')}.s3.{config('BUCKET_REGION')}.amazonaws.com/{key}"
+            setattr(item.description, db_columns[x], s3_url)
+    return item
+
+def _add_description(form, files, item):
     new_desc = Descriptions()
     new_desc.item_id = item.id
     new_desc.title = form.get('title')
     new_desc.descr = form.get('descr')
-    file_prefix = f"{item.user_id}/{item.id}/"
-    new_desc = _convert_and_upload_s3(files=files, new_desc=new_desc, file_prefix=file_prefix)
     db.session.add(new_desc)
     db.session.commit()
-    description = Descriptions.query.filter(Descriptions.item_id==item.id).first()
-    item.description_id = description.id
+    new_desc = _convert_and_upload_s3(files=files, item=item)
+    item.description_id = new_desc.id
     db.session.commit()
 
 def register_new_user(form):
@@ -85,7 +83,6 @@ def validate_user_login(form):
     try:
         username = form.get('username')
         user = Users.query.filter(Users.username==username).first()
-        print('user exists')
         if bcrypt.checkpw(form.get('password').encode("utf-8"),
                         user.password):
             return (True, username)
@@ -115,8 +112,7 @@ def add_item_post(username, form, files):
             )
         db.session.add(new_item)
         db.session.commit()
-        item = Items.query.filter(Items.user_id==user.id).order_by(desc(Items.created)).first()
-        _add_description(form, files, item)
+        _add_description(form, files, new_item)
         print("Files uploaded")
     except Exception as e:
         print(e)
@@ -128,5 +124,23 @@ def show_user_item_get(username, item_id):
         if user.username != username:
             raise IndexError
         return item
+    except Exception:
+        return "Item Not Found"
+    
+def edit_user_item_post(username, item_id, form, files):
+    try:
+        item = Items.query.get(item_id)
+        user = Users.query.get(item.user_id)
+        if user.username != username:
+            raise IndexError
+        item.type = form.get('type')
+        item.name = form.get('name')
+        item.price = form.get('price')
+        item.tradeable = True if form.get('tradeable') else False
+        item.status = form.get('status')
+        item.description.title = form.get('title')
+        item.description.descr = form.get('descr')
+        item = _convert_and_upload_s3(files, item)
+        db.session.commit()
     except Exception:
         return "Item Not Found"
