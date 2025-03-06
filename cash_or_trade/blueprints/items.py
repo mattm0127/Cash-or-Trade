@@ -28,3 +28,12 @@ def edit_item(username, item_id):
         db_client.edit_user_item_post(username, item_id, request.form, request.files)
         return redirect(url_for('items.show_item', username=username, item_id=item.id))
     return render_template('items/edit_item.html', item=item)
+
+@items.route('/<username>/<item_id>/delete', methods=["GET", "POST"])
+def delete_item(username, item_id):
+    if request.method == "POST":
+        db_client.delete_item_post(username, item_id)
+        return redirect(url_for('items.user_items', username=username))
+    item = db_client.show_user_item_get(username, item_id)
+    return render_template('items/delete_item.html', item=item)
+
