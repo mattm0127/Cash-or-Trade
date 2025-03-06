@@ -25,7 +25,7 @@ class Items(db.Model):
     type = db.Column(db.String(10), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     description_id = db.Column(db.Integer)
-    price = db.Column(db.Float, nullable=False)
+    price = db.Column(db.Numeric(10, 2), nullable=False)
     tradeable = db.Column(db.Boolean, nullable=False, default=False)
     status = db.Column(db.String(10), nullable=False, default='private')
     created = db.Column(db.DateTime, default=datetime.datetime.now())

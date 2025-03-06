@@ -141,9 +141,9 @@ def edit_user_item_post(username, item_id, form, files):
         user = Users.query.get(item.user_id)
         if user.username != username:
             raise IndexError('You dont have permission')
-        item.type = form.get('type')
-        item.name = form.get('name')
-        item.price = form.get('price')
+        item.type = form.get('type') 
+        item.name = form.get('name') if len(form.get('name')) > 0 else item.name
+        item.price = form.get('price') if len(form.get('price')) > 0 else item.price
         item.tradeable = True if form.get('tradeable') else False
         item.status = form.get('status')
         item.description.title = form.get('title')
