@@ -4,7 +4,7 @@
     <a href="{{ url_for('items.add_item', username=session.username) }}">Add Item</a>
     <h2>{{session.username}}'s Items</h2>
     {% for item in user_items %}
-        <a href="{{url_for('items.show_user_item', username=session.username, item_id=item.id)}}">
+        <a href="{{url_for('items.show_item', username=session.username, item_id=item.id)}}">
             <img src="{{item.description.img1}}" width="300px" height="200px">
         </a>
         <p>Item Name: {{item.name}} - Price: ${{item.price}}</p>
