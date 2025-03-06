@@ -52,6 +52,14 @@ def _convert_and_upload_s3(files, item):
             setattr(item.description, db_columns[x], s3_url)
     return item
 
+def _delete_from_s3(username, item_id):
+    keys_to_delete = [f"{username}/{item_id}/img{x}.png" for x in range(1,6)]
+    response = s3_client.delete_objects(
+        Bucket=config("BUCKET_NAME"),
+        Delete = {'Objects': [{'Key': key} for key in keys_to_delete]}
+    )
+    print(response)
+
 def _add_description(form, files, item):
     new_desc = Descriptions()
     new_desc.item_id = item.id
@@ -132,7 +140,7 @@ def edit_user_item_post(username, item_id, form, files):
         item = Items.query.get(item_id)
         user = Users.query.get(item.user_id)
         if user.username != username:
-            raise IndexError
+            raise IndexError('You dont have permission')
         item.type = form.get('type')
         item.name = form.get('name')
         item.price = form.get('price')
@@ -142,5 +150,29 @@ def edit_user_item_post(username, item_id, form, files):
         item.description.descr = form.get('descr')
         item = _convert_and_upload_s3(files, item)
         db.session.commit()
-    except Exception:
-        return "Item Not Found"
+    except Exception as e:
+        return e
+
+def delete_item_post(username, item_id):
+    try:
+        item = Items.query.get(item_id)
+        if username != item.user.username:
+            raise ValueError("You dont have permission")
+        _delete_from_s3(username, item_id)
+        db.session.delete(item)
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return e
+        
+def all_listings_get():
+    all_listings = Items.query.filter(Items.status=='public').all()
+    return all_listings
+
+def show_listing_get(listing_id):
+    try:
+        listing = Items.query.filter(Items.status=='public', 
+                                     Items.id==listing_id).first()
+        return listing
+    except Exception as e:
+        return None

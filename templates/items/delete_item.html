@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Are you sure you want to delete {{item.name}}</p>
+    <form action="{{url_for('items.delete_item', username=session.username, item_id=item.id)}}" method="POST">
+        <button type="input">Confirm</button>
+    </form>
+{% endblock %}

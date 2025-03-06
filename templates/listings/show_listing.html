@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Listing Owner: {{listing.user.username}}</p>
+    <p>Name: {{listing.name}}</p>
+    <p>Price: ${{listing.price}}</p>
+    <p>Title: {{listing.description.title}}</p>
+    <p>Description: {{listing.description.descr}}</p>
+    <p>Type: {{listing.type}}</p>
+    <p>Tradeable: {{listing.tradeable}}</p>
+    <p>Status: {{listing.status}}</p>
+    <p> 
+        {% if listing.description.img1 %}
+            <img src="{{listing.description.img1}}" width="300px" height="200px">
+        {% endif %}
+        {% if listing.description.img2 %}
+            <img src="{{listing.description.img2}}" width="300px" height="200px">
+        {% endif %}
+        {% if listing.description.img3 %}
+            <img src="{{listing.description.img3}}" width="300px" height="200px">
+        {% endif %}
+        {% if listing.description.img4 %}
+            <img src="{{listing.description.img4}}" width="300px" height="200px">
+        {% endif %}
+        {% if listing.description.img5 %}
+            <img src="{{listing.description.img5}}" width="300px" height="200px">
+        {% endif %}
+    </p>
+{% endblock %}
