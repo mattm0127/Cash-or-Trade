@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="{{ url_for('items.add_item', username=session.username) }}">Add Item</a>
-    <h2>{{session.username}}'s Items</h2>
+    <div class="user-items-title">
+        <h2>{{session.username}}'s Items</h2>
+        <a href="{{ url_for('items.add_item', username=session.username) }}">Add Item</a>
+    </div>
+
+<div class="user-items">
     {% for item in user_items %}
-        <a href="{{url_for('items.show_item', username=session.username, item_id=item.id)}}">
-            <img src="{{item.description.img1}}" width="300px" height="200px">
-        </a>
-        <p>Item Name: {{item.name}} - Price: ${{item.price}}</p>
+        <div class="user-item">
+            <div class="user-items-img">
+                <a href="{{url_for('items.show_item', username=session.username, item_id=item.id)}}">
+                    <img src="{{item.description.img1}}" width="300px" height="200px">
+                </a>
+            </div>
+            <div class="user-items-text">
+                <p>{{item.name}}</p>
+            </div>
+        </div>
     {% endfor %}
+</div>
 {% endblock %}

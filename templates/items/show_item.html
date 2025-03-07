@@ -1,29 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>Name: {{item.name}}</p>
-    <p>Price: ${{item.price}}</p>
-    <p>Title: {{item.description.title}}</p>
-    <p>Description: {{item.description.descr}}</p>
-    <p>Type: {{item.type}}</p>
-    <p>Tradeable: {{item.tradeable}}</p>
-    <p>Status: {{item.status}}</p>
-    <p> {% if item.description.img1 %}
-        <img src="{{item.description.img1}}" width="300px" height="200px">
-        {% endif %}
-        {% if item.description.img2 %}
-        <img src="{{item.description.img2}}" width="300px" height="200px">
-        {% endif %}
-        {% if item.description.img3 %}
-        <img src="{{item.description.img3}}" width="300px" height="200px">
-        {% endif %}
-        {% if item.description.img4 %}
-        <img src="{{item.description.img4}}" width="300px" height="200px">
-        {% endif %}
-        {% if item.description.img5 %}
-        <img src="{{item.description.img5}}" width="300px" height="200px">
-        {% endif %}
-    </p>
-    <p><a href="{{ url_for('items.edit_item', username=session.username, item_id=item.id)}}">Edit</a> - 
-        <a href="{{ url_for('items.delete_item', username=session.username, item_id=item.id) }}">Delete</a></p>
+    <div class="show-user-item">
+        <div class="show-user-item-text">
+            <p><b>Name:</b> {{item.name}}</p>
+            <p><b>Price:</b> ${{item.price}}</p>
+            <p><b>Title:</b> {{item.description.title}}</p>
+            <p><b>Description</b> {{item.description.descr}}</p>
+            <p><b>Type:</b> {{item.type}}</p>
+            <p><b>Willing to Trade:</b> {{item.tradeable}}</p>
+            <p><b>Status:</b> {{item.status}}</p>
+            <p style="text-align: center;">
+                <a href="{{ url_for('items.edit_item', username=session.username, item_id=item.id)}}">Edit</a> - 
+                <a href="{{ url_for('items.delete_item', username=session.username, item_id=item.id) }}">Delete</a>
+            </p>
+        </div>
+        <div class="show-user-item-img">
+            {% if item.description.img1 %}
+            <img src="{{item.description.img1}}" width="300px" height="200px">
+            {% endif %}
+            {% if item.description.img2 %}
+            <img src="{{item.description.img2}}" width="300px" height="200px">
+            {% endif %}
+            {% if item.description.img3 %}
+            <img src="{{item.description.img3}}" width="300px" height="200px">
+            {% endif %}
+            {% if item.description.img4 %}
+            <img src="{{item.description.img4}}" width="300px" height="200px">
+            {% endif %}
+            {% if item.description.img5 %}
+            <img src="{{item.description.img5}}" width="300px" height="200px">
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

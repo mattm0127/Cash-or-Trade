@@ -20,7 +20,6 @@ def show_item(username, item_id):
     item = db_client.show_user_item_get(username, item_id)
     return render_template('items/show_item.html', item=item)
 
-
 @items.route('/<username>/<item_id>/edit', methods=["GET", "POST"])
 def edit_item(username, item_id):
     item = db_client.show_user_item_get(username, item_id)
