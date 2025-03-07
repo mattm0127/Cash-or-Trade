@@ -2,64 +2,71 @@
 
 {% block content %}
     <form action="{{ url_for('items.edit_item', username=session.username, item_id=item.id) }}" method="POST" enctype="multipart/form-data">
-        <p>
-            <label for="name" id="name">Item Name: </label>
-            <input type="text" name="name" id="name" value="{{item.name}}">
-        </p>
-        <p>
-            <label for="title" id="title">Title for Listing: </label>
-            <input type="text" name="title" id="title" value="{{item.description.title}}">
-        </p>
-        <p>
-            <label for="descr" id="descr">Item Description: </label>
-            <textarea type="text" name="descr" id="descr">{{item.description.descr}}</textarea>
-        </p>
-        <p>
-            <label for="type" id="type">Item Type (select): </label>
-            <select id="type" name="type" value="{{item.type}}">
-                <option value="electronics"{% if item.type == "electronics" %}selected{% endif %}>Electronics</option>
-                <option value="home" {% if item.type == "home" %}selected{% endif %}>Home</option>
-                <option value="kitchen" {% if item.type == "kitchen" %}selected{% endif %}>Kitchen</option>
-                <option value="outdoors" {% if item.type == "outdoors" %}selected{% endif %}>Outdoors</option>
-            </select>
-        </p>
-        <p>
-            <label for="price" id="price">Item Price: </label>
-            <input type="text" name="price" id="price" value="{{item.price}}">
-        </p>
-        <p>
-            <label for="tradeable" id="tradeable">Accept Trades: </label>
-            <input type="checkbox" name="tradeable" id="tradeable" {% if item.tradeable %}checked{% endif %}>
-        </p>
-        <p>
-            <label for="status" id="status">Item Status: </label>
-            <select id="status" name="status">
-                <option value="public" {% if item.status == "public" %}selected{% endif %}>Public</option>
-                <option value="private" {% if item.status == "private" %}selected{% endif %}>Private</option>
-            </select>
-        </p>
-        <p>
-            <p><img src="{{item.description.img1}}" width="300px" height="200px"></p>
-            <input type="file" id="img1" name="img1">
-        </p>
-        <p>
-            <p><img src="{{item.description.img2}}" width="300px" height="200px"></p>
-            <input type="file" id="img2" name="img2">
-        </p>
-        <p>
-            <p><img src="{{item.description.img3}}" width="300px" height="200px"></p>
-            <input type="file" id="img3" name="img3">
-        </p>
-        <p>
-            <p><img src="{{item.description.img4}}" width="300px" height="200px"></p>
-            <input type="file" id="img4" name="img4">
-        </p>
-        <p>
-            <p><img src="{{item.description.img5}}" width="300px" height="200px"></p>
-            <input type="file" id="img5" name="img5">
-        </p>
-        <p>
-            <button type="submit">Submit</button>
-        </p>
+        <div class="edit-form">
+            <div class="edit-form-text">
+                <p>
+                    <label for="name" id="name">Item Name: </label>
+                    <input type="text" name="name" id="name" value="{{item.name}}">
+                </p>
+                <p>
+                    <label for="title" id="title">Title for Listing: </label>
+                    <input type="text" name="title" id="title" value="{{item.description.title}}">
+                </p>
+                <p>
+                    <label for="descr" id="descr">Item Description: </label>
+                    <textarea type="text" name="descr" id="descr" rows='4' cols='28'>{{item.description.descr}}</textarea>
+                </p>
+                <p>
+                    <label for="type" id="type">Item Type (select): </label>
+                    <select id="type" name="type" value="{{item.type}}">
+                        <option value="electronics"{% if item.type == "electronics" %}selected{% endif %}>Electronics</option>
+                        <option value="home" {% if item.type == "home" %}selected{% endif %}>Home</option>
+                        <option value="kitchen" {% if item.type == "kitchen" %}selected{% endif %}>Kitchen</option>
+                        <option value="outdoors" {% if item.type == "outdoors" %}selected{% endif %}>Outdoors</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="price" id="price">Item Price: </label>
+                    <input type="text" name="price" id="price" value="{{item.price}}">
+                </p>
+                <p>
+                    <label for="tradeable" id="tradeable">Accept Trades: </label>
+                    <input type="checkbox" name="tradeable" id="tradeable" {% if item.tradeable %}checked{% endif %}>
+                </p>
+                <p>
+                    <label for="status" id="status">Item Status: </label>
+                    <select id="status" name="status">
+                        <option value="public" {% if item.status == "public" %}selected{% endif %}>Public</option>
+                        <option value="private" {% if item.status == "private" %}selected{% endif %}>Private</option>
+                    </select>
+                </p>
+                <p style="text-align: center;">
+                    <button type="submit">Submit</button>
+                </p>
+            </div>
+            <div class="edit-form-img">
+                <p>
+                    <img src="{{item.description.img1}}" width="300px" height="200px">
+                    <input type="file" id="img1" name="img1">
+                </p>
+                <p>
+                    <img src="{{item.description.img2}}" width="300px" height="200px">
+                    <input type="file" id="img2" name="img2">
+                </p>
+                <p>
+                    <img src="{{item.description.img3}}" width="300px" height="200px">
+                    <input type="file" id="img3" name="img3">
+                </p>
+                <p>
+                    <img src="{{item.description.img4}}" width="300px" height="200px">
+                    <input type="file" id="img4" name="img4">
+                </p>
+                <p>
+                    <img src="{{item.description.img5}}" width="300px" height="200px">
+                    <input type="file" id="img5" name="img5">
+                </p>
+
+            </div>
+        </div>
     </form>
 {% endblock %}

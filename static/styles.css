@@ -1,8 +1,11 @@
+/* All Listings */
+
 .all-listings {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 80% auto 0;
+    margin-left: 15%;
 }
 
 .listing {
@@ -27,4 +30,148 @@
 
 .listing-text {
     margin-top: 10px
+}
+
+/* Individual Listing */
+
+.show-listing {
+    display: flex;
+    justify-content: center;
+}
+
+.show-listing-title {
+    text-align: center;
+}
+
+.show-listing-text {
+    max-width: 20%;
+    padding-right: 5%;
+}
+
+.show-listing-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    flex-basis: 300px;
+}
+
+.show-listing-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+    margin: 5px;
+}
+
+/* Add Form */
+
+.add-form {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 50% auto 0;
+}
+
+.add-form-text {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100px;
+}
+
+/* All User Items */
+
+.user-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 80% auto 0;
+}
+
+.user_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    text-align: center;
+    flex-basis: 300px;
+}
+
+.user-items-img img {
+    display: block;
+    max-width: 100%;
+    height: 200px;
+    margin: 10px
+}
+
+.user-items-title {
+    text-align: center;
+}
+
+.user-items-text {
+    margin-top: 10px;
+    text-align: center
+}
+
+/* User Item */
+
+.show-user-item {
+    display: flex;
+    justify-content: center;
+}
+
+.show-user-item-title {
+    text-align: center;
+}
+
+.show-user-item-text {
+    max-width: 20%;
+    padding-right: 5%;
+}
+
+.show-user-item-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    flex-basis: 300px;
+}
+
+.show-user-item-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+    margin: 5px;
+}
+
+/* Edit User Item */
+
+.edit-form {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-form-text {
+    max-width: 20%;
+    padding-right: 5%;
+}
+
+.edit-form-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    flex-basis: 300px;
+}
+
+.edit-form-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+    margin: 5px;
+}
+
+/* Delete Item */
+
+.delete-item-form {
+    text-align: center;
 }

@@ -4,7 +4,6 @@ import bcrypt
 from cash_or_trade.extensions import database as db
 from cash_or_trade.extensions import s3_client
 from cash_or_trade.models import Users, Items, Descriptions, Purchases
-from sqlalchemy import desc
 from decouple import config
 from PIL import Image
 
