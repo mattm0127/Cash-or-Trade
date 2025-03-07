@@ -6,6 +6,7 @@
     justify-content: center;
     max-width: 80% auto 0;
     margin-left: 15%;
+    margin-right:15%
 }
 
 .listing {
@@ -30,6 +31,10 @@
 
 .listing-text {
     margin-top: 10px
+}
+
+.filter-form {
+    text-align: center;
 }
 
 /* Individual Listing */

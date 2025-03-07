@@ -1,5 +1,5 @@
 import io
-
+from decimal import Decimal
 import bcrypt
 from cash_or_trade.extensions import database as db
 from cash_or_trade.extensions import s3_client
@@ -113,7 +113,7 @@ def add_item_post(username, form, files):
                 user_id = user.id,
                 type = form.get('type'),
                 name = form.get('name'),
-                price = form.get('price'),
+                price = Decimal(form.get('price')),
                 tradeable = True if form.get('tradeable') else False,
                 status = form.get('status'),
             )
@@ -142,7 +142,7 @@ def edit_user_item_post(username, item_id, form, files):
             raise IndexError('You dont have permission')
         item.type = form.get('type') 
         item.name = form.get('name') if len(form.get('name')) > 0 else item.name
-        item.price = form.get('price') if len(form.get('price')) > 0 else item.price
+        item.price = Decimal(form.get('price')) if len(form.get('price')) > 0 else item.price
         item.tradeable = True if form.get('tradeable') else False
         item.status = form.get('status')
         item.description.title = form.get('title')
@@ -164,8 +164,11 @@ def delete_item_post(username, item_id):
         print(e)
         return e
         
-def all_listings_get():
-    all_listings = Items.query.filter(Items.status=='public').all()
+def all_listings_get(filter):
+    if filter == 'all':
+        all_listings = Items.query.filter(Items.status=='public').all()
+    else:
+        all_listings = Items.query.filter(Items.status=='public', Items.type==filter).all()
     return all_listings
 
 def show_listing_get(listing_id):

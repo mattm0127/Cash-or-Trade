@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="filter-form">
+        <form action="{{ url_for('listings.home')}}" method="POST">
+            <button type="submit"><label for="filter" id="filter"><b>Filter:</b> </label></button>
+            <select id="filter" name="filter">
+                <option value="all" {% if type_filter == "all" %}selected{% endif %}>All</option>
+                <option value="electronics" {% if type_filter == "electronics" %}selected{% endif %}>Electronics</option>
+                <option value="home" {% if type_filter == "home" %}selected{% endif %}>Home</option>
+                <option value="kitchen" {% if type_filter == "kitchen" %}selected{% endif %}>Kitchen</option>
+                <option value="outdoors" {% if type_filter == "outdoors" %}selected{% endif %}>Outdoors</option>
+            </select>
+        </form>
+    </div>   
     <div class="all-listings">
         {% for listing in all_listings %}
         <div class="listing">
@@ -12,7 +24,7 @@
                     <img src="{{listing.description.img1}}" width="300px" height="200px"></a>
             </div>
             <div class="listing-text">
-                <b>Owner:</b> {{listing.user.username}} - <b>Price:</b> ${{listing.price}}
+                Owner: <b>{{listing.user.username}}</b> - Price: <b>${{listing.price}}</b>
             </div>
         </div>
         {% endfor %}
