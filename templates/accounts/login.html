@@ -10,15 +10,17 @@
             {% endif %}
         {% endwith %}
     </div>
-    <form action="{{ url_for('accounts.login') }}" method="POST">
-        <p>
-            <label id="username" for="username">Username: </label>
-            <input type="text" id="username" name="username" placeholder="Enter a username.">
-        </p>
-        <p>
-            <label id="password" for="passowrd">Password: </label>
-            <input type="password" id="password" name="password" placeholder="Enter your password">
-        </p>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="login-form">
+        <form action="{{ url_for('accounts.login') }}" method="POST">
+            <p>
+                <label id="username" for="username">Username: </label>
+                <input type="text" id="username" name="username" placeholder="Enter a username.">
+            </p>
+            <p>
+                <label id="password" for="passowrd">Password: </label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </p>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 {% endblock %}
