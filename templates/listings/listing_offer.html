@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="offer">
+        <div class="offer-listing">
+            <div class="offer-listing-text">
+                <p><b>{{listing.name}}</b></p>
+                <p><b>{{listing.price}}</b></p>
+                <p>Owner: <b>{{listing.user.username}}</b></p>
+            </div>
+            <div class="offer-listing-img">
+                <p><img src={{listing.description.img1}} width="300" height="200"></p>
+            </div>
+        </div>
+        <div class="offer-form">
+            <form action="{{ url_for('listings.listing_offer', listing_id=listing.id) }}" method="POST">
+                <h4 style="text-align: center;">Make an Offer: </h4>
+                <textarea type="text" name="offer_text" id="offer_text" rows='10' cols='50'></textarea>
+                <input type="hidden" name="buyer" value="{{session.username}}">
+                <p style="text-align: center;"><button type="submit">Submit Offer</button></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

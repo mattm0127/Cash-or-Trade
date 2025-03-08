@@ -10,10 +10,15 @@
             <p><b>Item Name:</b> {{listing.name}}</p>
             <p><b>Price:</b> ${{listing.price}}</p>
             <p style="overflow-wrap: break-word"><b>Description:</b> {{listing.description.descr}}</p>
-            <p style="overflow-wrap: break-word">
+            <p style="text-align: center; overflow-wrap: break-word">
                 {{listing.user.username}} 
                 <b>{% if listing.tradeable == True %} IS {% else %} IS NOT {% endif %}</b> 
                 willing to Trade this Item.
+            </p>
+            <p style="text-align: center;">
+                <a href="{{ url_for('listings.listing_offer', listing_id=listing.id) }}">
+                    <button>Make an Offer</button>
+                </a>
             </p>
         </div>
         <div class="show-listing-img"> 
