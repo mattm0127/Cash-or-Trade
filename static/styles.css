@@ -1,3 +1,17 @@
+/* Login */
+
+.login-form {
+    display: block;
+    text-align: center;
+}
+
+/* Register */
+
+.register-form {
+    display: block;
+    text-align: center;
+}
+
 /* All Listings */
 
 .all-listings {
