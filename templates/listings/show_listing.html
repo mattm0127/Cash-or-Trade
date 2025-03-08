@@ -23,19 +23,29 @@
         </div>
         <div class="show-listing-img"> 
             {% if listing.description.img1 %}
-                <img src="{{listing.description.img1}}" max_width="300px" max_height="200px">
+                <a href="{{listing.description.img1}}">
+                    <img src="{{listing.description.img1}}" max_width="300px" max_height="200px">
+                </a>
             {% endif %}
             {% if listing.description.img2 %}
-                <img src="{{listing.description.img2}}" max_width="300px" max_height="200px">
+                <a href="{{listing.description.img2}}">
+                    <img src="{{listing.description.img2}}" max_width="300px" max_height="200px">
+                </a>
             {% endif %}
             {% if listing.description.img3 %}
-                <img src="{{listing.description.img3}}" max_width="300px" max_height="200px">
+                <a href="{{listing.description.img3}}">
+                    <img src="{{listing.description.img3}}" max_width="300px" max_height="200px">
+                </a>
             {% endif %}
             {% if listing.description.img4 %}
-                <img src="{{listing.description.img4}}" max_width="300px" max_height="200px">
+                <a href="{{listing.description.img4}}">
+                    <img src="{{listing.description.img4}}" max_width="300px" max_height="200px">
+                </a>
             {% endif %}
             {% if listing.description.img5 %}
+            <a href="{{listing.description.img5}}">
                 <img src="{{listing.description.img5}}" max_width="300px" max_height="200px">
+            </a>
             {% endif %}
         </div>
     </div>
