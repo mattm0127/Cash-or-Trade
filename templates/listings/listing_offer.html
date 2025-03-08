@@ -5,11 +5,11 @@
         <div class="offer-listing">
             <div class="offer-listing-text">
                 <p><b>{{listing.name}}</b></p>
-                <p><b>{{listing.price}}</b></p>
+                <p>$<b>{{listing.price}}</b></p>
                 <p>Owner: <b>{{listing.user.username}}</b></p>
             </div>
             <div class="offer-listing-img">
-                <p><img src={{listing.description.img1}} width="300" height="200"></p>
+                <p><img src={{listing.description.img1}} max_width="300" max_height="200"></p>
             </div>
         </div>
         <div class="offer-form">

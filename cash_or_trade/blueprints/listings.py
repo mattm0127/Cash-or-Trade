@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from cash_or_trade import db_client
 from cash_or_trade.extensions import email_client
+from cash_or_trade.auth import require_login
 
 listings = Blueprint('listings', __name__, url_prefix='/listings')
 
@@ -23,6 +24,7 @@ def show_listing(listing_id):
     return render_template('/listings/show_listing.html', listing=listing)
 
 @listings.route('/view/<listing_id>/offer', methods=["GET", "POST"])
+@require_login
 def listing_offer(listing_id):
     if request.method == "POST":
         buyer_username = request.form.get('buyer')

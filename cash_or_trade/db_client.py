@@ -38,7 +38,10 @@ def _convert_and_upload_s3(files, item):
         if files.get(f'img{x}'):
             file = files.get(f'img{x}')
             key = file_prefix + f'img{x}.png'
+            max_width = 1920
+            max_height = 1080
             with Image.open(file) as image:
+                image.thumbnail((max_width, max_height))
                 png_buffer = io.BytesIO()
                 image.save(png_buffer, format='PNG')
             png_buffer.seek(0)

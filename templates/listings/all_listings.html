@@ -21,7 +21,7 @@
             </div>
             <div class="listing-img">
                 <a href="{{ url_for('listings.show_listing', listing_id=listing.id)}}">
-                    <img src="{{listing.description.img1}}" width="300px" height="200px"></a>
+                    <img src="{{listing.description.img1}}" max_width="300px" max_height="200px"></a>
             </div>
             <div class="listing-text">
                 Owner: <b>{{listing.user.username}}</b> - Price: <b>${{listing.price}}</b>
