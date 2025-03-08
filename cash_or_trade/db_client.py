@@ -98,6 +98,10 @@ def validate_user_login(form):
         print(e)
         return (False, "Incorrect Username")
 
+def get_user_by_username(username):
+    user = Users.query.filter(Users.username==username).first()
+    return user
+
 def user_items_get(username):
     try:
         user = Users.query.filter(Users.username==username).first()
