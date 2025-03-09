@@ -8,7 +8,7 @@
             <p><b>Title:</b> {{item.description.title}}</p>
             <p><b>Description</b> {{item.description.descr}}</p>
             <p><b>Type:</b> {{item.type}}</p>
-            <p><b>Willing to Trade:</b> {{item.tradeable}}</p>
+            <p><b>Willing to Trade:</b> {% if item.tradeable==True %} yes {% else %} no {% endif %}</p>
             <p><b>Status:</b> {{item.status}}</p>
             <p style="text-align: center;">
                 <a href="{{ url_for('items.edit_item', username=session.username, item_id=item.id)}}">Edit</a> - 

@@ -1,221 +1,311 @@
 /* Login */
-
 .login-form {
     display: block;
     text-align: center;
-}
-
-/* Register */
-
-.register-form {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Register */
+  .register-form {
     display: block;
     text-align: center;
-}
-
-/* All Listings */
-
-.all-listings {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Flash Messages */
+  .flash-messages {
+    text-align: center;
+    padding: 10px;
+    background-color: #e8f5e9; /* Very light green */
+    color: #1b5e20; /* Darker green for text */
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  /* All Listings */
+  .all-listings {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 80% auto 0;
-    margin-left: 15%;
-    margin-right:15%
-}
-
-.listing {
+    max-width: 80%;
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px;
+  }
+  
+  .listing {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin: 15px; /* Increased margin for spacing */
     text-align: center;
     flex-basis: 300px;
-}
-
-.listing-img img {
+    background-color: #fff; /* White background for each listing */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+    padding: 15px;
+  }
+  
+  .listing-img img {
     display: block;
     max-width: 100%;
     height: 200px;
-}
-
-.listing-title {
-    margin-top: 5px;
-    font-size: 20px;
-}
-
-.listing-text {
-    margin-top: 10px
-}
-
-.filter-form {
+    object-fit: cover; /* Maintain aspect ratio and cover area */
+    border-radius: 6px;
+  }
+  
+  .listing-title {
+    margin-top: 10px;
+    font-size: 22px;
+    color: #333; /* Dark grey for title */
+  }
+  
+  .listing-text {
+    margin-top: 15px;
+    color: #555; /* Medium grey for text */
+  }
+  
+  .filter-form {
     text-align: center;
-}
-
-/* Individual Listing */
-
-.show-listing {
+    padding: 20px;
+    background-color: #f0f8ff; /* Light blue background */
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* Individual Listing */
+  .show-listing {
     display: flex;
     justify-content: center;
-}
-
-.show-listing-title {
+    padding: 20px;
+  }
+  
+  .show-listing-title {
     text-align: center;
-}
-
-.show-listing-text {
-    max-width: 20%;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .show-listing-text {
+    max-width: 30%; /* Adjusted width */
     padding-right: 5%;
-}
-
-.show-listing-img {
+    color: #555;
+    line-height: 1.6; /* Improved readability */
+  }
+  
+  .show-listing-img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
-    flex-basis: 300px;
-}
-
-.show-listing-img img {
+    margin: 15px;
+    flex-basis: 400px; /* Adjusted size */
+  }
+  
+  .show-listing-img img {
     display: block;
     max-width: 100%;
-    max-height: 200px;
-    margin: 5px;
-}
-
-/* Listing Offer */
-
-.offer {
+    max-height: 300px; /* Adjusted height */
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 10px 0;
+  }
+  
+  /* Listing Offer */
+  .offer {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.offer-listing {
+    padding: 20px;
+  }
+  
+  .offer-listing {
     display: flex;
-}
-
-.offer-listing-text {
-    margin-top: 10%;
-}
-
-.offer-listing-img {
-    margin-left: 50px;
-}
-
-.offer-listing-img img {
+    align-items: center; /* Vertically align items */
+  }
+  
+  .offer-listing-text {
+    margin-top: 0; /* Remove top margin */
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .offer-listing-img {
+    margin-left: 30px; /* Reduced margin */
+  }
+  
+  .offer-listing-img img {
     display: block;
     max-width: 100%;
     max-height: 200px;
-}
-/* Add Form */
-
-.add-form {
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  /* Add Form */
+  .add-form {
     display: flex;
     justify-content: center;
     text-align: center;
-    width: 50% auto 0;
-}
-
-.add-form-text {
+    width: 80%; /* Adjusted width */
+    margin: 20px auto; /* Center and add margin */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-form-text {
     display: flex;
     flex-direction: column;
     flex-basis: 100px;
-}
-
-/* All User Items */
-
-.user-items {
+  }
+  
+  /* All User Items */
+  .user-items {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 80% auto 0;
-}
-
-.user_item {
+    max-width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .user_item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin: 15px;
     text-align: center;
     flex-basis: 300px;
-}
-
-.user-items-img img {
-    display: block;
-    max-width: 100%;
-    height: 200px;
-    margin: 10px
-}
-
-.user-items-title {
-    text-align: center;
-}
-
-.user-items-text {
-    margin-top: 10px;
-    text-align: center
-}
-
-/* User Item */
-
-.show-user-item {
-    display: flex;
-    justify-content: center;
-}
-
-.show-user-item-title {
-    text-align: center;
-}
-
-.show-user-item-text {
-    max-width: 20%;
-    padding-right: 5%;
-}
-
-.show-user-item-img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    flex-basis: 300px;
-}
-
-.show-user-item-img img {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+  }
+  
+  .user-items-img img {
     display: block;
     max-width: 100%;
     max-height: 200px;
-    margin: 5px;
-}
-
-/* Edit User Item */
-
-.edit-form {
+    object-fit: cover;
+    margin: 10px 0;
+    border-radius: 6px;
+  }
+  
+  .user-items-title {
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .user-items-text {
+    margin-top: 15px;
+    text-align: center;
+    color: #555;
+  }
+  
+  /* User Item */
+  .show-user-item {
     display: flex;
     justify-content: center;
-}
-
-.edit-form-text {
-    max-width: 20%;
+    padding: 20px;
+  }
+  
+  .show-user-item-title {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .show-user-item-text {
+    max-width: 30%;
     padding-right: 5%;
-}
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .show-user-item-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    flex-basis: 400px;
+  }
+  
+  .show-user-item-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 10px 0;
+  }
+  
+  /* Edit User Item */
+  .edit-form {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 80%;
+  }
+  
+  .edit-form-text {
+    max-width: 30%;
+    padding-right: 5%;
+    color: #555;
+    line-height: 1.6;
+  }
 
+  /* Edit User Item (Image part) */
 .edit-form-img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
-    flex-basis: 300px;
-}
-
-.edit-form-img img {
+    margin: 15px;
+    flex-basis: 400px;
+  }
+  
+  .edit-form-img img {
     display: block;
     max-width: 100%;
-    max-height: 200px;
-    margin: 5px;
-}
-
-/* Delete Item */
-
-.delete-item-form {
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 10px 0;
+  }
+  
+  /* Delete Item */
+  .delete-item-form {
     text-align: center;
-}
+    padding: 20px;
+    background-color: #ffe0e0; /* Light red background for delete form */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 500px; /* Limit width for better readability */
+  }
+  
+  .delete-item-form button {
+    background-color: #d32f2f; /* Darker red for delete button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  .delete-item-form button:hover {
+    background-color: #b71c1c; /* Slightly darker red on hover */
+  }

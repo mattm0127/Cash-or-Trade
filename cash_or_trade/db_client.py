@@ -87,7 +87,7 @@ def register_new_user(form):
         db.session.commit()
         return (True, username)
     except Exception:
-        return (False, "Error Creating Account, Try Again.")
+        return (False, "Error Creating Account, Try Again")
 
 def validate_user_login(form):
     try:
@@ -96,7 +96,7 @@ def validate_user_login(form):
         if bcrypt.checkpw(form.get('password').encode("utf-8"),
                         user.password):
             return (True, username)
-        return (False, "Incorrect Password.")
+        return (False, "Incorrect Password")
     except Exception as e:
         print(e)
         return (False, "Incorrect Username")
