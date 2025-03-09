@@ -9,14 +9,14 @@
 <div class="user-items">
     {% for item in user_items %}
         <div class="user-item">
-            <div class="user-items-img">
-                <a href="{{url_for('items.show_item', username=session.username, item_id=item.id)}}">
-                    <img src="{{item.description.img1}}" max_width="300px" max_height="200px">
-                </a>
-            </div>
-            <div class="user-items-text">
-                <p>{{item.name}}</p>
-            </div>
+            <a href="{{url_for('items.show_item', username=session.username, item_id=item.id)}}" style="text-decoration: none;">
+                <div class="user-items-img">
+                    <img src="{{item.description.img1}}">
+                </div>
+                <div class="user-items-text">
+                    <p>{{item.name}}</p>
+                </div>
+            </a>
         </div>
     {% endfor %}
 </div>
