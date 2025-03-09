@@ -11,34 +11,38 @@
             <p><b>Willing to Trade:</b> {% if item.tradeable==True %} yes {% else %} no {% endif %}</p>
             <p><b>Status:</b> {{item.status}}</p>
             <p style="text-align: center;">
-                <a href="{{ url_for('items.edit_item', username=session.username, item_id=item.id)}}">Edit</a> - 
-                <a href="{{ url_for('items.delete_item', username=session.username, item_id=item.id) }}">Delete</a>
+                <a href="{{ url_for('items.edit_item', username=session.username, item_id=item.id)}}" style="text-decoration: none; margin-right: 20px;">
+                    <button>Edit</button>
+                </a> 
+                <a href="{{ url_for('items.delete_item', username=session.username, item_id=item.id) }}">
+                    <button>Delete</button>
+                </a>
             </p>
         </div>
         <div class="show-user-item-img">
             {% if item.description.img1 %}
                 <a href="{{item.description.img1}}">
-                    <img src="{{item.description.img1}}" max_width="300px" max_height="200px">
+                    <img src="{{item.description.img1}}">
                 </a>
             {% endif %}
             {% if item.description.img2 %}
                 <a href="{{item.description.img2}}">
-                    <img src="{{item.description.img2}}" max_width="300px" max_height="200px">
+                    <img src="{{item.description.img2}}">
                 </a>
             {% endif %}
             {% if item.description.img3 %}
                 <a href="{{item.description.img3}}">
-                    <img src="{{item.description.img3}}" max_width="300px" max_height="200px">
+                    <img src="{{item.description.img3}}">
                 </a>
             {% endif %}
             {% if item.description.img4 %}
                 <a href="{{item.description.img4}}">
-                    <img src="{{item.description.img4}}" max_width="300px" max_height="200px">
+                    <img src="{{item.description.img4}}">
                 </a>
             {% endif %}
             {% if item.description.img5 %}
             <a href="{{item.description.img5}}">
-                <img src="{{item.description.img5}}" max_width="300px" max_height="200px">
+                <img src="{{item.description.img5}}">
             </a>
             {% endif %}
         </div>

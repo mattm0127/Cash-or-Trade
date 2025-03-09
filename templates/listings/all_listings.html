@@ -3,7 +3,7 @@
 {% block content %}
     <div class="filter-form">
         <form action="{{ url_for('listings.home')}}" method="POST">
-            <button type="submit"><label for="filter" id="filter"><b>Filter:</b> </label></button>
+            <button type="submit"><b>Filter:</b></button>
             <select id="filter" name="filter">
                 <option value="all" {% if type_filter == "all" %}selected{% endif %}>All</option>
                 <option value="electronics" {% if type_filter == "electronics" %}selected{% endif %}>Electronics</option>
@@ -15,18 +15,19 @@
     </div>   
     <div class="all-listings">
         {% for listing in all_listings %}
-        <div class="listing">
-            <div class="listing-title">
-                <b>{{listing.description.title}}</b>
+            <div class="listing">
+                <a href="{{ url_for('listings.show_listing', listing_id=listing.id)}}" style="text-decoration: none">
+                    <div class="listing-title">
+                        <b>{{listing.description.title}}</b>
+                    </div>
+                    <div class="listing-img">
+                        <img src="{{listing.description.img1}}">
+                    </div>
+                    <div class="listing-text">
+                        Owner: <b>{{listing.user.username}}</b> - Price: <b>${{listing.price}}</b>
+                    </div>
+                </a>
             </div>
-            <div class="listing-img">
-                <a href="{{ url_for('listings.show_listing', listing_id=listing.id)}}">
-                    <img src="{{listing.description.img1}}" max_width="300px" max_height="200px"></a>
-            </div>
-            <div class="listing-text">
-                Owner: <b>{{listing.user.username}}</b> - Price: <b>${{listing.price}}</b>
-            </div>
-        </div>
         {% endfor %}
     </div>
 {% endblock %}
