@@ -2,6 +2,10 @@
 
 Cash or Trade is a web application built with Flask that allows users to list items for sale or trade. Users can register, log in, add items, edit items, and make offers on listings.
 
+
+https://github.com/user-attachments/assets/80cd7858-8f65-4dc5-809b-a47fa08a189d
+
+
 ## Project Structure
 
 ```
