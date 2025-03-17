@@ -47,8 +47,29 @@
     flex-basis: 300px;
     background-color: #fff; /* White background for each listing */
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.289); /* Slightly stronger shadow */
     padding: 15px;
+    --hover-color: rgba(0, 0, 0, 0.289);
+  }
+
+  .listing:hover {
+    box-shadow: 0 2px 6px var(--hover-color); /* Slightly stronger shadow */
+  }
+
+  .listing.electronics {
+    --hover-color: rgba(172, 135, 62, 0.748);
+  }
+
+  .listing.home {
+    --hover-color: rgba(89, 154, 215, 0.748);
+  }
+
+  .listing.kitchen {
+    --hover-color: rgba(147, 61, 90, 0.748);
+  }
+
+  .listing.outdoors {
+    --hover-color: rgba(65, 156, 101, 0.748);
   }
   
   .listing-img img {
@@ -75,10 +96,10 @@
   
   .filter-form {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     background-color: #f0f8ff; /* Light blue background */
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   /* Individual Listing */
