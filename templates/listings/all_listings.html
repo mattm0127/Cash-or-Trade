@@ -21,13 +21,58 @@
                         <b>{{listing.description.title}}</b>
                     </div>
                     <div class="listing-img">
-                        <img src="{{listing.description.img1}}">
+                        <img id="listing-img-{{listing.id}}" src="">
                     </div>
                     <div class="listing-text">
                         Owner: <b>{{listing.user.username}}</b> - Price: <b>${{listing.price}}</b>
                     </div>
                 </a>
             </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                (function() {
+                    let listingImage = document.getElementById('listing-img-{{listing.id}}')
+                    let images = [];
+                    if ("{{listing.description.img1}}" !== 'None') {
+                        images.push("{{listing.description.img1}}");
+                    };
+                    if ("{{listing.description.img2}}" !== 'None') {
+                        images.push("{{listing.description.img2}}");
+                    };
+                    if ("{{listing.description.img3}}" !== 'None') {
+                        images.push("{{listing.description.img3}}");
+                    };
+                    if ("{{listing.description.img4}}" !== 'None') {
+                        images.push("{{listing.description.img4}}");
+                    };
+                    if ("{{listing.description.img5}}" !== 'None') {
+                        images.push("{{listing.description.img5}}");
+                    };
+                    updateImage(images, listingImage);
+                    })();
+                });
+            </script>
         {% endfor %}
     </div>
+
+    <script>
+        function updateImage(images, listingImage) {
+            let currentIndex = 0;
+            let previousIndex = 0;
+            function setImage() {
+                if (images[currentIndex] !== 'None') {
+                    listingImage.src = images[currentIndex];
+                    previousIndex = currentIndex
+                    currentIndex = (currentIndex + 1) % images.length;
+                } else {
+                    listingImage.src = images[previousIndex]
+                    currentIndex = 0
+                }
+                console.log(images[currentIndex])
+            };
+            setImage();
+            setInterval(setImage, 5000);
+        };
+    </script>
 {% endblock %}
+
