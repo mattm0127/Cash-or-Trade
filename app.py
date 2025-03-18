@@ -39,8 +39,4 @@ if __name__ == '__main__':
     with app.app_context():
         from cash_or_trade import models
         database.create_all()
-       ### FOR TESTING ###
-    if enviornment == 'production':
-        app.run(host='0.0.0.0', debug=False)
-    else:
-        app.run(debug=True)
+    app.run(debug=True)
