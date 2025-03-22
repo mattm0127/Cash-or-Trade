@@ -39,4 +39,4 @@ if __name__ == '__main__':
     with app.app_context():
         from cash_or_trade import models
         database.create_all()
-    # app.run(debug=True)
+    app.run(debug=True)
